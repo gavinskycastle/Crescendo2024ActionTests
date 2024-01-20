@@ -22,7 +22,7 @@ public class SetAndHoldRPMSetpoint extends Command {
 
   @Override
   public void execute() {
-    m_shooter.setRPM(m_RPM);
+    m_shooter.setDesiredRPM(m_RPM);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

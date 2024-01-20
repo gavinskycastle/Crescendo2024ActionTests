@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import com.ctre.phoenix6.SignalLogger;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PS4Controller;
@@ -26,6 +27,7 @@ import frc.robot.commands.characterization.SwerveTurnQuasistatic;
 import frc.robot.commands.intake.RunIntake;
 import frc.robot.commands.intake.SetIntakePercentOutput;
 import frc.robot.commands.shooter.SetAndHoldRPMSetpoint;
+import frc.robot.commands.shooter.ToggleShooterTestMode;
 import frc.robot.commands.swerve.SetSwerveDrive;
 import frc.robot.commands.uptake.RunUptake;
 import frc.robot.constants.ROBOT;
@@ -98,6 +100,10 @@ public class RobotContainer {
     xboxController.povDown().whileTrue(new RunUptake(m_uptake, -0.5));
     xboxController.povUp().whileTrue(new RunUptake(m_uptake, 0.5));
     xboxController.y().whileTrue(new AmpFlipperForward(m_flipper));
+
+    if (!DriverStation.isFMSAttached()) {
+      SmartDashboard.putData(new ToggleShooterTestMode(m_shooter));
+    }
   }
 
   public void initAutoChooser() {
@@ -109,6 +115,7 @@ public class RobotContainer {
     // m_autoChooser.addOption("DefAuto", new DefAuto(m_swerveDrive));
     m_autoChooser.addOption("Amp Test", new ScoreAmp(m_flipper, m_ampshooter));
     m_autoChooser.addOption("Speaker Test", new ScoreSpeaker(m_shooter, m_uptake));
+    m_autoChooser.setDefaultOption("DriveStraightTest", new DriveStriaghtTest(m_swerveDrive));
     SmartDashboard.putData("AutoChooser", m_autoChooser);
   }
 

@@ -25,7 +25,7 @@ public class AutoSetRPMSetpoint extends Command {
 
   @Override
   public void execute() {
-    m_shooter.setRPM(m_state.get());
+    m_shooter.setDesiredRPM(m_state.get());
   }
 
   // Called every time the scheduler runs while the command is scheduled.
