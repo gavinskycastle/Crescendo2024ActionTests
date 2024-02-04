@@ -1,3 +1,3 @@
 # Crescendo2024
 
-![CI](https://github.com/github/4201VitruvianBots/Crescendo2024/.github/workflows/main.yml/badge.svg)
+[![CI](https://github.com/gavinskycastle/Crescendo2024ActionTests/actions/workflows/main.yml/badge.svg)](https://github.com/gavinskycastle/Crescendo2024ActionTests/actions/workflows/main.yml)
